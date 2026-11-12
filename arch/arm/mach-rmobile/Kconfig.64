@@ -255,6 +255,11 @@ config TARGET_ONEKIWI_RZV2H_16GB
 	help
 	  Support for OneKiwi RZ/V2H SOM Platform
 
+config TARGET_ONEKIWI_RZV2H_4GB
+	bool "OneKiwi RZ/V2H 4GB board"
+	help
+	  Support for OneKiwi RZ/V2H SOM Platform
+
 endchoice
 
 config SYS_SOC
@@ -278,6 +283,7 @@ source "board/renesas/rzv2h-dev/Kconfig"
 source "board/renesas/onekiwi-rzv2h-dev/Kconfig"
 source "board/renesas/onekiwi-rzv2h-8gb/Kconfig"
 source "board/renesas/onekiwi-rzv2h-16gb/Kconfig"
+source "board/renesas/onekiwi-rzv2h-4gb/Kconfig"
 
 config MULTI_DTB_FIT_UNCOMPRESS_SZ
 	default 0x80000 if TARGET_HIHOPE_RZG2
