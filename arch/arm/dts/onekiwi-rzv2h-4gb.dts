@@ -541,25 +541,25 @@
 	status = "okay";
 };
 
+/* eMMC on the SOM (same as the SDK v5.20 4GB U-Boot) */
 &sdhi0 {
-	pinctrl-0 = <&sdhi0_pins>;
-	pinctrl-names = "default";
-	vmmc-supply = <&vmmc_sdhi0>;
-	vqmmc-supply = <&vccq_sdhi0>;
-	bus-width = <4>;
-	sd-uhs-sdr50;
-	sd-uhs-sdr104;
+	bus-width = <8>;
+	non-removable;
+	fixed-emmc-driver-type = <1>;
 	status = "okay";
 };
 
+/* microSD: 3.3V high-speed only, the 4GB carrier has no SD I/O voltage switch
+ * (same as the OneKiwi 4GB kernel DTS). The 8GB vqmmc GPIO (P10_2) setting gave
+ * "Card did not respond to voltage select! : -84". */
 &sdhi1 {
 	pinctrl-0 = <&sdhi1_pins>;
 	pinctrl-names = "default";
 	vmmc-supply = <&vmmc_sdhi1>;
-	vqmmc-supply = <&vccq_sdhi1>;
 	bus-width = <4>;
-	sd-uhs-sdr50;
-	sd-uhs-sdr104;
+	cap-sd-highspeed;
+	max-frequency = <50000000>;
+	no-1-8-v;
 	status = "okay";
 };
 
