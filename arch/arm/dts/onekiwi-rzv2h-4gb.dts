@@ -555,7 +555,7 @@
 &sdhi1 {
 	pinctrl-0 = <&sdhi1_pins>;
 	pinctrl-names = "default";
-	vmmc-supply = <&vmmc_sdhi1>;
+	/* card power (P10_3) is switched on in s_init(), like the SDK v5.20 U-Boot */
 	bus-width = <4>;
 	cap-sd-highspeed;
 	max-frequency = <50000000>;

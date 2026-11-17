@@ -127,6 +127,13 @@ void s_init(void)
 	*(volatile u8 *)P_2A      = (*(volatile u32 *)P_2A  & ~(0x03<<4)) | (0x01 <<5); /* PA5=1,PA4=0		*/
 	*(volatile u16 *)PM_2A    = (*(volatile u32 *)PM_2A & ~(0x0f<<8)) | (0x0c <<8); /* PA5,PA4 output	*/
 #endif
+#if defined(CONFIG_TARGET_ONEKIWI_RZV2H_4GB)
+	/* SD1 (microSD on the OneKiwi 4GB carrier), same as the SDK v5.20 U-Boot:
+	 * PA3 (P10_3) = 1 -> SD card power on, PA2 (P10_2) = 0 -> SD I/O 3.3V */
+	*(volatile u8 *)PMC_2A   &= ~(0x03 << 2);/* PA3,PA2 port */
+	*(volatile u8 *)P_2A      = (*(volatile u32 *)P_2A  & ~(0x03<<2)) | (0x01 <<3); /* PA3=1,PA2=0		*/
+	*(volatile u16 *)PM_2A    = (*(volatile u32 *)PM_2A & ~(0x0f<<4)) | (0x0a <<4); /* PA3,PA2 output	*/
+#endif
 #if CONFIG_TARGET_RZV2H_EVK_ALPHA || CONFIG_TARGET_RZV2H_EVK_VER1
 	/* SD1  */
 	*(volatile u8 *)PMC_2A   &= ~(0x03 << 2);/* PA3,PA2 port */
